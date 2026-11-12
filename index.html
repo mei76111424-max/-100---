@@ -405,6 +405,7 @@ function bossMarquee(S,g,label){
 async function renderBoss(){
   let S=null;
   if(db){try{const s=await db.doc("stats/summary").get();S=s.exists?(s.data().q||{}):{};sumU=s.exists&&Array.isArray(s.data().u)?s.data().u:[];rebuildUnits()}catch(e){S=null}}
+  if(!S&&!db&&SHEET_URL){try{const m={};[...(await sheetRows()),...local].forEach(x=>m[x.eid+"_"+x.ts]=x);S=tally(Object.values(m)).q}catch(e){S=null}}
   if(!S){try{S=JSON.parse(localStorage.getItem("hq_stats2")||"{}")}catch(e){S={}}}
   const h=bossMarquee(S,1,"醫事人員")+bossMarquee(S,2,"行政後勤");
   $("bd0").innerHTML=h;$("bd1").innerHTML=h;
