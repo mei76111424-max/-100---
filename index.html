@@ -128,11 +128,11 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-of
  <div class="card" id="stcard" hidden><b>📊 錯題統計彙總（僅管理者可見）</b><p class="note" id="stst"></p><button class="btn" id="strebuild">由現有成績重建彙總</button></div>
  <details class="audit" id="audit" hidden>
   <summary>🩺 題庫修訂紀錄（僅管理者可見）</summary>
-  <p>以下題目已依外部指引修訂，並於 2026-11-02 經<b>院內感染科核定</b>。</p>
+  <p>以下題目已依外部指引修訂，並於 2026-11-11 經<b>院內感染科核定</b>。</p>
   <ul>
    <li><b>醫事 第 1 題 敗血症</b>：改為依休克／敗血症可能性分情境給藥（SSC 2026）。</li>
    <li><b>醫事 第 4 題 CRAB 防護</b>：手套＋隔離衣為基本；口罩／護目依照護活動與院內政策。</li>
-   <li><b>醫事 第 5 題（M05，原 Vancomycin 題改為痰液革蘭氏染色判讀）</b>：改為痰液革蘭氏染色判讀（EPI &lt; 10/LPF 且 PMN &gt; 25/LPF）；Vancomycin AUC 題已移除。</li>
+   <li><b>醫事 第 5 題（M05）</b>：原 Vancomycin 題改為痰液革蘭氏染色判讀（EPI &lt; 10/LPF 且 PMN &gt; 25/LPF）；Vancomycin AUC 題已移除。</li>
    <li><b>醫事 第 9 題 VRE</b>：優先單人房；不足時依院內政策評估集中安置。</li>
    <li><b>醫事 第 13–15 題</b>：痰液檢體合格標準（EPI &lt; 10/LPF）、CoNS 為不常見致病菌、念珠菌定植，改為四選項題。</li>
    <li><b>醫事 第 18 題 殘餘藥液</b>：改為依院內廢棄物分類及環保規定處理。</li>
@@ -146,7 +146,7 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-of
    <li><b>行政 第 11 題 療程</b>：改為依處方劑量、次數與療程服用。</li>
    <li><b>行政 第 14 題 CRAB 環境清潔</b>：改為核可消毒劑，並遵守濃度與接觸時間。</li>
   </ul>
-  <p><b>題庫清單（固定 id）</b>：修訂日＝最近一次修改題目內容的日期；院內審閱日＝感染科核定日期（2026-11-02）。</p><div class="wrap" id="qtab"></div>
+  <p><b>題庫清單（固定 id）</b>：修訂日＝最近一次修改題目內容的日期；院內審閱日＝感染科核定日期（2026-11-11）。</p><div class="wrap" id="qtab"></div>
   <p class="note">參考：SSC 2026；IDSA 導管相關感染 2009（該指引註明更新中）；IDSA ASB 2019；CDC 隔離預防措施 2007／MDRO 管理 2006。</p>
  </details>
 </section>
@@ -172,15 +172,15 @@ button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-of
 <script>
 // 題目格式：[題幹, 選項, 答案索引, 解說, 固定順序?, 固定id, 最後修訂日, 院內審閱日]
 // id 一經指定不得更動或重用（統計以 id 累計）；新增題目請用新的編號。
-const T=(id,q,ok,e,rev="",chk="2026-11-02")=>[q,["正確","錯誤"],ok?0:1,e,1,id,rev,chk];
-const C=(id,q,a,b,ans,e,rev="",chk="2026-11-02")=>[q,[a,b],ans==="A"?0:1,e,0,id,rev,chk];
+const T=(id,q,ok,e,rev="",chk="2026-11-11")=>[q,["正確","錯誤"],ok?0:1,e,1,id,rev,chk];
+const C=(id,q,a,b,ans,e,rev="",chk="2026-11-11")=>[q,[a,b],ans==="A"?0:1,e,0,id,rev,chk];
 // ===== 題庫 =====
 const BANK={1:[
-["依據 2026 年 Surviving Sepsis Campaign（SSC）指引，所有疑似敗血症患者都必須在辨識後 1 小時內給予抗生素，不需區分是否有敗血性休克或感染可能性高低？",["正確，所有疑似敗血症患者一律適用 1 小時原則。","錯誤，應依敗血症可能性及是否有休克，評估給藥時機。"],1,"2026 年 SSC 指引依臨床情境區分給藥時機：\n• 可能、很可能或確定有敗血性休克：立即給予抗生素，理想上於辨識後 1 小時內。\n• 很可能或確定有敗血症，但沒有休克：立即給予抗生素，理想上於辨識後 1 小時內。\n• 可能有敗血症，但沒有休克：先快速評估感染與非感染原因；若評估後仍懷疑感染，應於首次懷疑敗血症後 3 小時內給予抗生素。\n• 感染可能性低且沒有休克：可暫緩抗生素，但須持續密切監測。\n因此，不能將所有疑似敗血症患者一律套用 1 小時原則。",1,"M01","2026-10-30","2026-11-02"],
+["依據 2026 年 Surviving Sepsis Campaign（SSC）指引，所有疑似敗血症患者都必須在辨識後 1 小時內給予抗生素，不需區分是否有敗血性休克或感染可能性高低？",["正確，所有疑似敗血症患者一律適用 1 小時原則。","錯誤，應依敗血症可能性及是否有休克，評估給藥時機。"],1,"2026 年 SSC 指引依臨床情境區分給藥時機：\n• 可能、很可能或確定有敗血性休克：立即給予抗生素，理想上於辨識後 1 小時內。\n• 很可能或確定有敗血症，但沒有休克：立即給予抗生素，理想上於辨識後 1 小時內。\n• 可能有敗血症，但沒有休克：先快速評估感染與非感染原因；若評估後仍懷疑感染，應於首次懷疑敗血症後 3 小時內給予抗生素。\n• 感染可能性低且沒有休克：可暫緩抗生素，但須持續密切監測。\n因此，不能將所有疑似敗血症患者一律套用 1 小時原則。",1,"M01","2026-10-30","2026-11-11"],
 T("M02","重症感染患者的抗生素劑量調整，只需要看肝腎功能，跟藥物是親水性還是親脂性完全沒關係？",0,"不正確。親水性藥物分布體積大，易隨水腫、腹水而稀釋，重症早期通常需要給予較高的起始負荷劑量（Loading dose）；劑量調整不能只看肝腎功能。"),
 T("M03","輸注 Vancomycin（萬古黴素）時，為縮短時間而將點滴速度調至最快，只要總量正確即可？",0,"不正確。Vancomycin 輸注過快可能引起組織胺釋放，造成紅人症候群（Red man syndrome），應依規定速率緩慢輸注。"),
 T("M04","照顧確認感染多重抗藥性鮑氏不動桿菌（CRAB）的患者，護理師進入病室進行照護時，只要戴手套就好，不需要穿隔離衣？",0,"不正確。接觸隔離的基本原則是進入病室前穿戴手套與隔離衣，離開前脫除並立即執行手部衛生。是否需加戴口罩或護目裝備，則依照護活動有無飛沫／噴濺風險及院內隔離政策決定。","2026-10-30"),
-["臨床上判讀革蘭氏染色 (Gram stain) 痰液檢體時，下列何種細胞學特徵最符合下呼吸道急性細菌性感染之抹片表現？",["上皮細胞 (EPI) > 25/LPF，多核白血球 (PMN) < 10/LPF","上皮細胞 (EPI) < 10/LPF，且含有大量多核白血球 (PMN > 25/LPF)","上皮細胞 (EPI) > 50/LPF，PMN > 50/LPF","無任何發炎細胞，僅有大量雜菌"],1,"優質的痰液檢體鏡檢特徵為低上皮細胞污染（EPI < 10/LPF）且伴隨大量發炎反應細胞（PMN > 25/LPF），顯示檢體來自下呼吸道發炎病灶。",0,"M05","2026-11-02","2026-11-02"],
+["臨床上判讀革蘭氏染色 (Gram stain) 痰液檢體時，下列何種細胞學特徵最符合下呼吸道急性細菌性感染之抹片表現？",["上皮細胞 (EPI) > 25/LPF，多核白血球 (PMN) < 10/LPF","上皮細胞 (EPI) < 10/LPF，且含有大量多核白血球 (PMN > 25/LPF)","上皮細胞 (EPI) > 50/LPF，PMN > 50/LPF","無任何發炎細胞，僅有大量雜菌"],1,"優質的痰液檢體鏡檢特徵為低上皮細胞污染（EPI < 10/LPF）且伴隨大量發炎反應細胞（PMN > 25/LPF），顯示檢體來自下呼吸道發炎病灶。",0,"M05","2026-11-02","2026-11-11"],
 T("M06","口服 Levofloxacin 等 Fluoroquinolones 類抗生素，可以跟牛奶或含有鈣、鎂、鐵的胃藥同時服用，完全不影響吸收？",0,"不正確。Fluoroquinolones 與含鈣、鎂、鐵等多價陽離子的製劑會產生螯合作用，降低腸道吸收與血中藥物濃度，可能導致治療失敗，服用時間應至少間隔 2 小時。"),
 T("M07","外科手術預防性抗生素（PAP）的最佳給藥時機，是在手術切口（Skin incision）前的 60 分鐘內給予？",1,"正確。預防性抗生素的目標，是使切皮時血中藥物濃度達到足夠水準，一般於切皮前 60 分鐘內給予；Vancomycin 因滴注時間較長，需於切皮前 120 分鐘內開始給予。"),
 T("M08","治療耐甲氧西林金黃色葡萄球菌（MRSA）引起的「嚴重肺炎」時，Daptomycin 是首選且療效極佳的殺菌性抗生素？",0,"不正確。Daptomycin 會被肺表面張力素（surfactant）不活化，不適用於肺炎的治療。"),
@@ -188,30 +188,30 @@ T("M09","確認為抗萬古黴素腸球菌（VRE）的病人，應優先安排�
 T("M10","Aminoglycosides 類抗生素（如 Amikacin）屬於濃度依賴型藥物，臨床常採用「每日一次高劑量（OD）」給藥，這樣做殺菌效果更好且能降低腎毒性？",1,"正確。Aminoglycosides 為濃度依賴型藥物，具抗生素後效應（PAE）；每日一次高劑量給藥可讓腎小管細胞有時間排空藥物，降低蓄積毒性。"),
 T("M11","重症患者長期使用廣效抗生素後如果出現持續腹瀉、發燒，應高度警覺是否發生了「艱難梭菌感染（CDI）」？",1,"正確。廣效抗生素會破壞腸道正常菌叢，可能引發艱難梭菌感染（CDI），表現為偽膜性結腸炎。確診後應評估是否停用原有抗生素，並依指引選擇治療（如口服 Vancomycin）。"),
 T("M12","只要臨床醫師個人經驗豐富，開立後線最後防線抗生素（如 Colistin）時，就不需要經過感染科醫師審查？",0,"不正確。Colistin 等後線抗生素應落實抗生素管理：使用前事先審核，或於使用後 48 小時內完成事後審查，以延緩抗藥性發展、保留最後防線藥物的療效。"),
-["評估痰液檢體合格性的標準，痰液抹片在低倍視野（LPF）下的扁平上皮細胞（EPI）數量應滿足何種條件才可視為合格檢體？",["EPI > 25 / LPF","EPI < 10 / LPF","EPI > 50 / LPF","不論 EPI 數量，只需 PMN > 10 / LPF"],1,"根據 Murray & Washington 等多項臨床微生物權威標準，合格痰液檢體之扁平上皮細胞 (EPI) 需少於 10/LPF；若 EPI > 25/LPF 代表主要混入唾液污染。（本院微生物實驗室於 EPI ≥ 3+（10–25/LPF）時，會建議視需要重新留取品質良好之檢體再送驗。）",0,"M13","2026-11-02","2026-11-02"],
-["在痰液培養報告中，下列何種菌株通常被列為「不常見致病菌 (Unlikely Pathogen)」，若病患無相符之臨床肺炎症狀，通常不需針對其開立抗生素？",["綠膿桿菌 (Pseudomonas aeruginosa)","肺炎鏈球菌 (Streptococcus pneumoniae)","凝固酶陰性葡萄球菌 (Coagulase-negative Staphylococci)","流感嗜血桿菌 (Haemophilus influenzae)"],2,"講義明確指出：凝固酶陰性葡萄球菌 (CoNS)、腸球菌 (Enterococci) 以及念珠菌 (Candida spp) 在痰液培養中多屬於上呼吸道定植菌或污染菌，列為 Unlikely Pathogens，不需常規抗生素治療。",0,"M14","2026-11-02","2026-11-02"],
-["若住院病患之痰液真菌培養分離出念珠菌（例如 Candida glabrata），但病患無全身性真菌感染或侵襲性肺部真菌感染之臨床證據，適當的處置為何？",["立即給予靜脈注射 Fluconazole 治療","評估為口咽部菌落定植，不需給予抗真菌藥物治療","立即投予廣效抗生素以預防次發性細菌感染","立即進行支氣管鏡洗滌並持續給予抗真菌治療"],1,"念珠菌屬 (Candida spp) 常見於口咽部及上呼吸道定植。若無侵襲性真菌感染實證，單純痰液培養出念珠菌不應作為給予抗真菌治療之依據。",0,"M15","2026-11-02","2026-11-02"],
+["評估痰液檢體合格性的標準，痰液抹片在低倍視野（LPF）下的扁平上皮細胞（EPI）數量應滿足何種條件才可視為合格檢體？",["EPI > 25 / LPF","EPI < 10 / LPF","EPI > 50 / LPF","不論 EPI 數量，只需 PMN > 10 / LPF"],1,"根據 Murray & Washington 等多項臨床微生物權威標準，合格痰液檢體之扁平上皮細胞 (EPI) 需少於 10/LPF；若 EPI > 25/LPF 代表主要混入唾液污染。（本院微生物實驗室於 EPI ≥ 3+（10–25/LPF）時，會建議視需要重新留取品質良好之檢體再送驗。）",0,"M13","2026-11-02","2026-11-11"],
+["在痰液培養報告中，下列何種菌株通常被列為「不常見致病菌 (Unlikely Pathogen)」，若病患無相符之臨床肺炎症狀，通常不需針對其開立抗生素？",["綠膿桿菌 (Pseudomonas aeruginosa)","肺炎鏈球菌 (Streptococcus pneumoniae)","凝固酶陰性葡萄球菌 (Coagulase-negative Staphylococci)","流感嗜血桿菌 (Haemophilus influenzae)"],2,"講義明確指出：凝固酶陰性葡萄球菌 (CoNS)、腸球菌 (Enterococci) 以及念珠菌 (Candida spp) 在痰液培養中多屬於上呼吸道定植菌或污染菌，列為 Unlikely Pathogens，不需常規抗生素治療。",0,"M14","2026-11-02","2026-11-11"],
+["若住院病患之痰液真菌培養分離出念珠菌（例如 Candida glabrata），但病患無全身性真菌感染或侵襲性肺部真菌感染之臨床證據，適當的處置為何？",["立即給予靜脈注射 Fluconazole 治療","評估為口咽部菌落定植，不需給予抗真菌藥物治療","立即投予廣效抗生素以預防次發性細菌感染","立即進行支氣管鏡洗滌並持續給予抗真菌治療"],1,"念珠菌屬 (Candida spp) 常見於口咽部及上呼吸道定植。若無侵襲性真菌感染實證，單純痰液培養出念珠菌不應作為給予抗真菌治療之依據。",0,"M15","2026-11-02","2026-11-11"],
 C("M16","血液培養分離出高度多重抗藥性的「碳青黴烯類抗藥性腸桿菌（CRE）」，此時應如何處理？","微生物室立即通報，病房儘速實施接觸隔離，並啟動院內感染管制機制。","先行記錄，待隔日醫師查房時再順便告知。","A","選 A。CRE 為院內感染管制的重點菌種，檢出後應視為危急值立即通報，並儘速實施接觸隔離。"),
 C("M17","臨床推行「抗生素降階治療（De-escalation）」，其正確的意涵為何？","直接停用所有抗生素，以節省病人及醫院的健保支出。","重症初期先以廣效抗生素經驗性涵蓋，待培養確認菌種後，儘速改用窄效抗生素。","B","選 B。降階治療是抗生素管理（Stewardship）的核心策略：重症初期先以廣效藥物經驗性涵蓋，待培養與藥敏結果確認後改為窄效藥物，在維持療效的同時降低抗藥性的篩選壓力。"),
 C("M18","在病房調配完抗生素後，剩下未滴注完的殘餘藥液，可以直接倒進洗手檯沖走嗎？","不可以。應依院內廢棄物分類及環保規定處理，避免抗生素殘留進入水體。","可以，用大量自來水稀釋沖走即可。","A","選 A。殘留抗生素若進入環境水體，可能增加環境中細菌的抗藥性選汰壓力。請依院內規範（指定容器或廢棄藥品處理流程）處理，不要直接倒入水槽。","2026-10-30"),
 C("M19","藥敏試驗發現金黃色葡萄球菌對紅黴素（Erythromycin）抗藥、對克林黴素（Clindamycin）敏感，微生物室該怎麼做？","不能直接採信，應加做 D-test，確認是否為 Clindamycin 誘導型抗藥。","依原始藥敏結果，直接發出敏感報告。","A","選 A。Erythromycin 可誘導細菌表現隱藏的抗藥基因（Clindamycin 誘導型抗藥）；未執行 D-test 可能誤報為敏感，臨床使用 Clindamycin 時恐導致治療失敗。"),
 C("M20","綠膿桿菌對 Piperacillin、Ceftazidime、Imipenem、Ciprofloxacin 等三類以上核心抗生素皆抗藥，是否可判定為多重抗藥性菌株？","是，符合多重抗藥性綠膿桿菌（MDR-PA）的定義。","否，屬暫時性結果，日後重新檢測抗藥性便會消失。","A","選 A。對三類以上核心抗生素皆抗藥，符合多重抗藥性綠膿桿菌（MDR-PA）的定義，應立即啟動院內多重抗藥性菌（MDRO）管理措施。"),
-["在大多數無症狀菌尿症（Asymptomatic Bacteriuria, ASB）的成人群體（如長照機構長者、留置尿管病患）中，臨床處置原則為何？",["僅在培養出革蘭氏陰性菌時給予抗生素治療","不建議給予抗生素治療，因為缺乏臨床效益且可能增加 ADE 及抗藥性風險","常規開立 7-10 天廣效性抗生素進行細菌清除","只要尿液白血球 (Pyuria) 呈陽性即須給予抗生素"],1,"IDSA 指南與 Cochrane 系統化綜述指出，對一般無症狀菌尿症患者給予抗生素並無法降低症狀性 UTI 或死亡率，反而增加不良事件與抗藥性風險，因此不建議治療。",0,"M21","2026-11-02","2026-11-02"],
-["下列何者屬於臨床上少數「明確建議篩檢並治療」無症狀菌尿症 (ASB) 的特殊族群？",["放置留置導尿管的住院病患","懷孕婦女 (Pregnant women) 及即將接受會造成黏膜出血之泌尿科手術者","停經後婦女","脊髓損傷且長期自行導尿者"],1,"講義明列 ASB 治療的例外（Exceptions）包括：懷孕婦女（可降低腎盂腎炎及不良妊娠結果風險）以及即將接受預期會造成黏膜出血之泌尿科介入處置者。",0,"M22","2026-11-02","2026-11-02"],
-["關於留置尿管病患之無症狀菌尿症 (CA-ASB) 與膿尿 (Pyuria) 的臨床判讀，下列敘述何者正確？",["膿尿 (Pyuria) 的存在可用於區分 CA-ASB 與 CA-UTI","伴隨 CA-ASB 出現的膿尿不應作為開立抗生素治療的適應症","只要導尿管病患尿液出現膿尿，不論有無症狀均應立即給予抗生素","無症狀導尿管病患出現膿尿代表發生急性腎盂腎炎"],1,"據 IDSA 指導方針，留置尿管病患出現膿尿 (Pyuria) 極為常見，不能單憑膿尿區分 CA-ASB 與症狀性 CA-UTI，伴隨 ASB 的膿尿不應作為抗生素治療之適應症。",0,"M23","2026-11-02","2026-11-02"],
-["清潔中段尿培養中，診斷膀胱菌尿症 (Bladder bacteriuria) 的傳統細菌菌落數門檻（Threshold）為何？",["≥ 10^2 CFU/mL","≥ 10^3 CFU/mL","≥ 10^5 CFU/mL","≥ 10^8 CFU/mL"],2,"中段尿培養之標準門檻為 ≥ 10^5 CFU/mL 代表膀胱菌尿症可能性高；若 < 10^5 CFU/mL 且無症狀，較可能為尿道、陰道或糞便污染。",0,"M24","2026-11-02","2026-11-02"],
-["若導尿管病患出現發燒、腰痛、肋骨脊椎角敲痛 (CVA tenderness) 或新發生的血尿，培養出 ≥ 10^3 CFU/mL 細菌，此時應診斷為？",["導管相關無症狀菌尿症 (CA-ASB)","導管相關症狀性尿路感染 (CA-UTI)","尿液檢體採樣污染","慢性腎衰竭"],1,"出現發燒、腰痛、CVA 敲痛或全身性症狀，且尿液培養符合菌落數門檻（≥ 10^3 CFU/mL），符合症狀性 CA-UTI 診斷，需給予適當抗生素治療。",0,"M25","2026-11-02","2026-11-02"],
-["在血液培養報告中，下列何者屬於「幾乎總是被視為臨床顯著致病菌 (Always clinically significant)」，鮮少僅為採血皮膚污染？",["凝固酶陰性葡萄球菌 (Coagulase-negative Staphylococci)","金黃色葡萄球菌 (Staphylococcus aureus)","痤瘡丙酸桿菌 (Cutibacterium acnes)","棒狀桿菌屬 (Corynebacterium species)"],1,"講義及 UpToDate 資料指出：Staphylococcus aureus、Streptococcus pneumoniae、Pseudomonas aeruginosa、Candida 等分離出時幾乎總是具有臨床顯著意義；而 CoNS、Corynebacterium、Cutibacterium acnes 等常為皮膚污染菌。",0,"M26","2026-11-02","2026-11-02"],
-["採用半定量滾板法（Roll plate method）進行靜脈導管尖端培養時，判定為導管菌落化（Catheter colonization）或支援 CRBSI 診斷的菌落數量門檻為何？",["> 5 CFU","> 15 CFU","> 100 CFU","> 10^5 CFU"],1,"導管尖端半定量培養（Maki roll-plate method）採無菌方式切下約 4 cm 導管尖端在洋菜平板上滾動，培養 > 15 CFU 判定為導管菌落化/陽性。",0,"M27","2026-11-02","2026-11-02"],
-["關於靜脈導管相關血流感染 (CRBSI) 的確診條件，下列敘述何者最完整正確？",["單純導管尖端培養 > 15 CFU 即可確診 CRBSI，不需抽周邊血培養","需自周邊靜脈抽取至少一套血液培養與導管尖端培養出相同致病菌，且導管尖端 > 15 CFU","只要病患發燒且留有中心靜脈導管即為 CRBSI","導管尖端培養報告無任何臨床價值，已被全面禁止使用"],1,"確診 CRBSI 必須結合臨床感染徵候：\n1. 導管尖端 > 15 CFU（傳統半定量滾板法 roll-plate method 的定殖判定門檻）＋相同致病菌（周邊血液與導管尖端培養結果一致），是傳統確診的重要依據。\n2. 其他確診方式：也可利用配對血液培養的定量菌落數比值（導管血／周邊血 ≥ 3:1）或差異報告陽性時間（DTP，導管血至少早 2 小時陽性）判定。\n實際臨床判讀仍須結合血液培養結果、臨床表現及其他可能感染來源。單純導管尖端陽性而血培養陰性者僅為導管菌落化。",0,"M28","2026-11-02","2026-11-02"],
-["若病患移除中心靜脈導管後，導管尖端培養分離出金黃色葡萄球菌 (Staphylococcus aureus)，但初始周邊血培養為陰性且無敗血症症狀，根據文獻處置建議為何？",["完全不給予任何抗生素，直接觀察即可","給予 short-course（約 5-7 天）抗菌劑治療並密切監測，因後續發生 S. aureus 菌血症風險顯著增高","立即給予 4-6 週之高劑量靜脈抗生素治療","重新留置導尿管並投予抗真菌藥物"],1,"研究顯示，導管尖端培養出 S. aureus 若未給予治療，後續發生 S. aureus 菌血症的風險達 24%；立即給予 5-7 天抗藥性涵蓋藥物可降低 83% 後續菌血症風險。",0,"M29","2026-11-02","2026-11-02"],
-["關於呼吸道菌落定植（Colonization）的臨床特性與判讀原則，下列敘述何者正確？",["只要痰液培養陽性，不論有無臨床症狀皆須給予抗生素","口咽部與上呼吸道常有原生菌群定植，慢性病或近期住院病患更容易出現菌落定植","菌落定植的細菌會在肺部造成嚴重的組織破壞與發炎反應","菌落定植只會發生於免疫力完全正常的健康個體"],1,"口咽部及呼吸道常有原生菌群定植，尤以慢性病患者或近期曾住院者更為普遍。任何陽性培養報告均必須結合病患之發炎指標、臨床症狀與影像學表現進行綜合判讀。",0,"M30","2026-11-02","2026-11-02"],
-["下列哪一類微生物在血液培養中被分類為「可能為臨床顯著致病菌，亦可能僅為污染菌 (May be clinically significant or contamination)」？",["綠膿桿菌 (Pseudomonas aeruginosa)","草綠色鏈球菌 (Viridans streptococci)","肺炎鏈球菌 (Streptococcus pneumoniae)","大腸桿菌 (Escherichia coli)"],1,"草綠色鏈球菌 (Viridans streptococci) 及腸球菌 (Enterococci) 分類於「可能具有臨床顯著意義，亦可能為污染菌」，需要結合陽性套數與臨床心臟內膜炎等症狀綜合評估。",0,"M31","2026-11-02","2026-11-02"],
-["對住院病患進行艱難梭菌 (Clostridioides difficile) 檢驗（如 NAAT 或毒素檢驗）的最佳優先目標族群為何？",["所有剛入院無症狀的篩檢病患","出現無法解釋且新發生的 24 小時內 ≥ 3 次稀便/水便 (unformed stools) 病患","正在使用緩瀉劑 (Laxatives) 的正常成形便病患","所有長期使用抗生素但無腹瀉者"],1,"IDSA/SHEA 指南明確建議：只有出現無法解釋且新發生的 24 小時內 ≥ 3 次不成形便（水便/稀便）病患，才是進行 C. difficile 檢驗的適當族群，避免過度診斷無症狀攜帶者。",0,"M32","2026-11-02","2026-11-02"],
-["若病患之糞便篩檢報告顯示「Culture positive for VRE（抗萬古黴素腸球菌）」或 CRE(碳青黴烯類抗藥性腸桿菌)，但病患無任何腸道外感染或發炎症狀，臨床適應處置為何？",["立即開立靜脈 Linezolid 進行腸道除菌","評估為腸道菌落定植 (Colonization)，不需給予抗生素治療，但需採行接觸隔離防護 (Contact Precautions)","立即投予靜脈 Colistin 治療","進行外科腸道清洗"],1,"糞便篩檢出 VRE 或 CRE 代表腸道菌落定植（Screening/Colonization），不需開立抗生素進行腸道去菌（無臨床效益且增加抗藥性），但應落實接觸隔離以防院內傳播。",0,"M33","2026-11-02","2026-11-02"],
-["根據 JAMA Intern Med (2017) 刊載之住院患者抗生素相關不良藥物事件（ADE）研究，關於抗生素使用與 ADE 風險的敘述何者正確？",["非臨床適應症 (Non-clinically indicated) 的抗生素療程完全不會產生 ADE","每增加 10 天的抗生素療程，發生 ADE 的風險即增加 3%","只有使用 vancomycin 時會產生腎毒性，其餘抗生素皆無 ADE","住院患者中僅有 1% 會發生抗生素相關 ADE"],1,"JAMA Intern Med 研究指出：在 1488 名住院患者中，20% 發生至少 1 次抗生素相關 ADE，且每增加 10 天抗生素療程，ADE 風險即增加 3%；即使是非臨床適應症的抗生素也有 20% 發生 ADE。",0,"M34","2026-11-02","2026-11-02"],
-["根據 JAMA Intern Med 該研究統計，住院患者發生的抗生素相關不良藥物事件 (ADE) 中，最常見的器官系統毒性前三名依序為何？",["心臟毒性、神經毒性、皮膚毒性","腸胃道 (Gastrointestinal)、腎臟 (Renal)、血液學 (Hematologic) 異常","肝膽毒性、神經毒性、呼吸毒性","耳毒性、眼毒性、骨骼毒性"],1,"根據 JAMA Intern Med 研究統計顯示，最常見的 30 天 ADE 為腸胃道（42%）、腎臟（24%）及血液學異常（15%）。研究另指出，每增加 10 天抗生素使用時間，發生 ADE 的風險約增加 3%，凸顯抗生素應依適應症合理使用，並避免不必要的延長療程。",0,"M35","2026-11-02","2026-11-02"],
-["推動「抗生素合理使用管理 (Antibiotic Stewardship)」以減少不必要抗生素給予的主要臨床目的為何？",["單純降低醫院購買藥物的經濟成本","減少患者暴露於非必要藥物不良事件 (ADE) 之傷害、降低選擇性抗藥菌株產生，並提升整體醫療品質","延長所有患者的住院天數","取代臨床醫師的臨床診斷自主權"],1,"抗生素管理的核心精神在於：「When NOT to use antibiotics」——透過精準判讀臨床檢驗與症狀，避免非適應症用藥，進而減少 ADE 傷害、延緩抗藥性衍生並改善預後。",0,"M36","2026-11-02","2026-11-02"]
+["在大多數無症狀菌尿症（Asymptomatic Bacteriuria, ASB）的成人群體（如長照機構長者、留置尿管病患）中，臨床處置原則為何？",["僅在培養出革蘭氏陰性菌時給予抗生素治療","不建議給予抗生素治療，因為缺乏臨床效益且可能增加 ADE 及抗藥性風險","常規開立 7-10 天廣效性抗生素進行細菌清除","只要尿液白血球 (Pyuria) 呈陽性即須給予抗生素"],1,"IDSA 指南與 Cochrane 系統化綜述指出，對一般無症狀菌尿症患者給予抗生素並無法降低症狀性 UTI 或死亡率，反而增加不良事件與抗藥性風險，因此不建議治療。",0,"M21","2026-11-02","2026-11-11"],
+["下列何者屬於臨床上少數「明確建議篩檢並治療」無症狀菌尿症 (ASB) 的特殊族群？",["放置留置導尿管的住院病患","懷孕婦女 (Pregnant women) 及即將接受會造成黏膜出血之泌尿科手術者","停經後婦女","脊髓損傷且長期自行導尿者"],1,"講義明列 ASB 治療的例外（Exceptions）包括：懷孕婦女（可降低腎盂腎炎及不良妊娠結果風險）以及即將接受預期會造成黏膜出血之泌尿科介入處置者。",0,"M22","2026-11-02","2026-11-11"],
+["關於留置尿管病患之無症狀菌尿症 (CA-ASB) 與膿尿 (Pyuria) 的臨床判讀，下列敘述何者正確？",["膿尿 (Pyuria) 的存在可用於區分 CA-ASB 與 CA-UTI","伴隨 CA-ASB 出現的膿尿不應作為開立抗生素治療的適應症","只要導尿管病患尿液出現膿尿，不論有無症狀均應立即給予抗生素","無症狀導尿管病患出現膿尿代表發生急性腎盂腎炎"],1,"據 IDSA 指導方針，留置尿管病患出現膿尿 (Pyuria) 極為常見，不能單憑膿尿區分 CA-ASB 與症狀性 CA-UTI，伴隨 ASB 的膿尿不應作為抗生素治療之適應症。",0,"M23","2026-11-02","2026-11-11"],
+["清潔中段尿培養中，診斷膀胱菌尿症 (Bladder bacteriuria) 的傳統細菌菌落數門檻（Threshold）為何？",["≥ 10^2 CFU/mL","≥ 10^3 CFU/mL","≥ 10^5 CFU/mL","≥ 10^8 CFU/mL"],2,"中段尿培養之標準門檻為 ≥ 10^5 CFU/mL 代表膀胱菌尿症可能性高；若 < 10^5 CFU/mL 且無症狀，較可能為尿道、陰道或糞便污染。",0,"M24","2026-11-02","2026-11-11"],
+["若導尿管病患出現發燒、腰痛、肋骨脊椎角敲痛 (CVA tenderness) 或新發生的血尿，培養出 ≥ 10^3 CFU/mL 細菌，此時應診斷為？",["導管相關無症狀菌尿症 (CA-ASB)","導管相關症狀性尿路感染 (CA-UTI)","尿液檢體採樣污染","慢性腎衰竭"],1,"出現發燒、腰痛、CVA 敲痛或全身性症狀，且尿液培養符合菌落數門檻（≥ 10^3 CFU/mL），符合症狀性 CA-UTI 診斷，需給予適當抗生素治療。",0,"M25","2026-11-02","2026-11-11"],
+["在血液培養報告中，下列何者屬於「幾乎總是被視為臨床顯著致病菌 (Always clinically significant)」，鮮少僅為採血皮膚污染？",["凝固酶陰性葡萄球菌 (Coagulase-negative Staphylococci)","金黃色葡萄球菌 (Staphylococcus aureus)","痤瘡丙酸桿菌 (Cutibacterium acnes)","棒狀桿菌屬 (Corynebacterium species)"],1,"講義及 UpToDate 資料指出：Staphylococcus aureus、Streptococcus pneumoniae、Pseudomonas aeruginosa、Candida 等分離出時幾乎總是具有臨床顯著意義；而 CoNS、Corynebacterium、Cutibacterium acnes 等常為皮膚污染菌。",0,"M26","2026-11-02","2026-11-11"],
+["採用半定量滾板法（Roll plate method）進行靜脈導管尖端培養時，判定為導管菌落化（Catheter colonization）或支援 CRBSI 診斷的菌落數量門檻為何？",["> 5 CFU","> 15 CFU","> 100 CFU","> 10^5 CFU"],1,"導管尖端半定量培養（Maki roll-plate method）採無菌方式切下約 4 cm 導管尖端在洋菜平板上滾動，培養 > 15 CFU 判定為導管菌落化/陽性。",0,"M27","2026-11-02","2026-11-11"],
+["關於靜脈導管相關血流感染 (CRBSI) 的確診條件，下列敘述何者最完整正確？",["單純導管尖端培養 > 15 CFU 即可確診 CRBSI，不需抽周邊血培養","需自周邊靜脈抽取至少一套血液培養與導管尖端培養出相同致病菌，且導管尖端 > 15 CFU","只要病患發燒且留有中心靜脈導管即為 CRBSI","導管尖端培養報告無任何臨床價值，已被全面禁止使用"],1,"確診 CRBSI 必須結合臨床感染徵候：\n1. 導管尖端 > 15 CFU（傳統半定量滾板法 roll-plate method 的定殖判定門檻）＋相同致病菌（周邊血液與導管尖端培養結果一致），是傳統確診的重要依據。\n2. 其他確診方式：也可利用配對血液培養的定量菌落數比值（導管血／周邊血 ≥ 3:1）或差異報告陽性時間（DTP，導管血至少早 2 小時陽性）判定。\n實際臨床判讀仍須結合血液培養結果、臨床表現及其他可能感染來源。單純導管尖端陽性而血培養陰性者僅為導管菌落化。",0,"M28","2026-11-02","2026-11-11"],
+["若病患移除中心靜脈導管後，導管尖端培養分離出金黃色葡萄球菌 (Staphylococcus aureus)，但初始周邊血培養為陰性且無敗血症症狀，根據文獻處置建議為何？",["完全不給予任何抗生素，直接觀察即可","給予 short-course（約 5-7 天）抗菌劑治療並密切監測，因後續發生 S. aureus 菌血症風險顯著增高","立即給予 4-6 週之高劑量靜脈抗生素治療","重新留置導尿管並投予抗真菌藥物"],1,"研究顯示，導管尖端培養出 S. aureus 若未給予治療，後續發生 S. aureus 菌血症的風險達 24%；立即給予 5-7 天抗藥性涵蓋藥物可降低 83% 後續菌血症風險。",0,"M29","2026-11-02","2026-11-11"],
+["關於呼吸道菌落定植（Colonization）的臨床特性與判讀原則，下列敘述何者正確？",["只要痰液培養陽性，不論有無臨床症狀皆須給予抗生素","口咽部與上呼吸道常有原生菌群定植，慢性病或近期住院病患更容易出現菌落定植","菌落定植的細菌會在肺部造成嚴重的組織破壞與發炎反應","菌落定植只會發生於免疫力完全正常的健康個體"],1,"口咽部及呼吸道常有原生菌群定植，尤以慢性病患者或近期曾住院者更為普遍。任何陽性培養報告均必須結合病患之發炎指標、臨床症狀與影像學表現進行綜合判讀。",0,"M30","2026-11-02","2026-11-11"],
+["下列哪一類微生物在血液培養中被分類為「可能為臨床顯著致病菌，亦可能僅為污染菌 (May be clinically significant or contamination)」？",["綠膿桿菌 (Pseudomonas aeruginosa)","草綠色鏈球菌 (Viridans streptococci)","肺炎鏈球菌 (Streptococcus pneumoniae)","大腸桿菌 (Escherichia coli)"],1,"草綠色鏈球菌 (Viridans streptococci) 及腸球菌 (Enterococci) 分類於「可能具有臨床顯著意義，亦可能為污染菌」，需要結合陽性套數與臨床心臟內膜炎等症狀綜合評估。",0,"M31","2026-11-02","2026-11-11"],
+["對住院病患進行艱難梭菌 (Clostridioides difficile) 檢驗（如 NAAT 或毒素檢驗）的最佳優先目標族群為何？",["所有剛入院無症狀的篩檢病患","出現無法解釋且新發生的 24 小時內 ≥ 3 次稀便/水便 (unformed stools) 病患","正在使用緩瀉劑 (Laxatives) 的正常成形便病患","所有長期使用抗生素但無腹瀉者"],1,"IDSA/SHEA 指南明確建議：只有出現無法解釋且新發生的 24 小時內 ≥ 3 次不成形便（水便/稀便）病患，才是進行 C. difficile 檢驗的適當族群，避免過度診斷無症狀攜帶者。",0,"M32","2026-11-02","2026-11-11"],
+["若病患之糞便篩檢報告顯示「Culture positive for VRE（抗萬古黴素腸球菌）」或 CRE(碳青黴烯類抗藥性腸桿菌)，但病患無任何腸道外感染或發炎症狀，臨床適應處置為何？",["立即開立靜脈 Linezolid 進行腸道除菌","評估為腸道菌落定植 (Colonization)，不需給予抗生素治療，但需採行接觸隔離防護 (Contact Precautions)","立即投予靜脈 Colistin 治療","進行外科腸道清洗"],1,"糞便篩檢出 VRE 或 CRE 代表腸道菌落定植（Screening/Colonization），不需開立抗生素進行腸道去菌（無臨床效益且增加抗藥性），但應落實接觸隔離以防院內傳播。",0,"M33","2026-11-02","2026-11-11"],
+["根據 JAMA Intern Med (2017) 刊載之住院患者抗生素相關不良藥物事件（ADE）研究，關於抗生素使用與 ADE 風險的敘述何者正確？",["非臨床適應症 (Non-clinically indicated) 的抗生素療程完全不會產生 ADE","每增加 10 天的抗生素療程，發生 ADE 的風險即增加 3%","只有使用 vancomycin 時會產生腎毒性，其餘抗生素皆無 ADE","住院患者中僅有 1% 會發生抗生素相關 ADE"],1,"JAMA Intern Med 研究指出：在 1488 名住院患者中，20% 發生至少 1 次抗生素相關 ADE，且每增加 10 天抗生素療程，ADE 風險即增加 3%；即使是非臨床適應症的抗生素也有 20% 發生 ADE。",0,"M34","2026-11-02","2026-11-11"],
+["根據 JAMA Intern Med 該研究統計，住院患者發生的抗生素相關不良藥物事件 (ADE) 中，最常見的器官系統毒性前三名依序為何？",["心臟毒性、神經毒性、皮膚毒性","腸胃道 (Gastrointestinal)、腎臟 (Renal)、血液學 (Hematologic) 異常","肝膽毒性、神經毒性、呼吸毒性","耳毒性、眼毒性、骨骼毒性"],1,"根據 JAMA Intern Med 研究統計顯示，最常見的 30 天 ADE 為腸胃道（42%）、腎臟（24%）及血液學異常（15%）。研究另指出，每增加 10 天抗生素使用時間，發生 ADE 的風險約增加 3%，凸顯抗生素應依適應症合理使用，並避免不必要的延長療程。",0,"M35","2026-11-02","2026-11-11"],
+["推動「抗生素合理使用管理 (Antibiotic Stewardship)」以減少不必要抗生素給予的主要臨床目的為何？",["單純降低醫院購買藥物的經濟成本","減少患者暴露於非必要藥物不良事件 (ADE) 之傷害、降低選擇性抗藥菌株產生，並提升整體醫療品質","延長所有患者的住院天數","取代臨床醫師的臨床診斷自主權"],1,"抗生素管理的核心精神在於：「When NOT to use antibiotics」——透過精準判讀臨床檢驗與症狀，避免非適應症用藥，進而減少 ADE 傷害、延緩抗藥性衍生並改善預後。",0,"M36","2026-11-02","2026-11-11"]
 ],2:[
 T("A01","感冒引起喉嚨痛、流鼻水，就該主動要求醫師開抗生素，感冒才會好得快？",0,"扣血！感冒九成是「病毒」引起的，抗生素只殺「細菌」，吃了不但沒效，還會破壞腸道益生菌！"),
 T("A02","吃抗生素幾天後發燒退了、症狀改善，為了不傷身體可以自己提早停藥？",0,"大踩雷！症狀好不代表細菌死光，擅自停藥只會把殘存細菌鍛鍊成「超級細菌」！"),
@@ -250,7 +250,8 @@ const MIN_N=20,HID="h"+Math.random().toString(36).slice(2,10);
 const $=id=>document.getElementById(id);
 const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
 const rng=(a,b)=>Array.from({length:b-a+1},(_,i)=>a+i-1); // 題號 a..b -> 索引
-let grp=0,eid="",unit="",score=0,correct=0,streak=0,asked=0,curId=0,responsesRecord=[],reviewList=[],allRows=[],dl=null,adm=false,left=100,timer=null,queue=[],loopRange=[],cur=null,locked=false,db=null,local=[];
+const SHEET_URL="https://script.google.com/macros/s/AKfycbw8XJUUl9v0e3vwi34GuOlpwC-vQsaKQ4TZTv_g0g0kfsuayY10QZYLGx3Tg60RkHMy/exec"; // ← 貼上 Apps Script 部署後的網頁應用程式網址（結尾為 /exec）
+let grp=0,uid="",eid="",unit="",score=0,correct=0,streak=0,asked=0,curId=0,responsesRecord=[],reviewList=[],allRows=[],dl=null,adm=false,left=100,timer=null,queue=[],loopRange=[],cur=null,locked=false,db=null,local=[];
 try{local=JSON.parse(localStorage.getItem("hq_scores")||"[]")}catch(e){}
 
 document.querySelectorAll(".grp button").forEach(b=>b.onclick=()=>{grp=+b.dataset.g;document.querySelectorAll(".grp button").forEach(x=>{x.classList.toggle("on",x===b);x.setAttribute("aria-pressed",x===b)})});
@@ -313,10 +314,11 @@ function renderReview(){const w=reviewList.filter(x=>!x.ok),box=$("rv");box.inne
 async function end(){
   locked=true;clearTimeout(ft);setLevel(0);$("t").classList.remove("hot");show("s-end");$("fs").textContent=score+" 分";renderReview();
   $("fd").textContent="答對 "+correct+" 題／作答 "+asked+" 題，答對率 "+(asked?Math.round(correct/asked*100):0)+"%";
-  const detail=responsesRecord.map(r=>r.id+":"+(r.ok?"O":"X")).join(", ");const rec={eid,unit,grp,role:grp===1?"醫師・藥師・醫檢師・護理師":"醫院工作人員",score,correct,asked,v:3,ts:Date.now(),detail,answers:responsesRecord.map(r=>({q:r.q,id:r.id,grp:r.grp,ok:r.ok}))};
+  const detail=responsesRecord.map(r=>r.id+":"+(r.ok?"O":"X")).join(", ");const rec={eid,uid,unit,grp,role:grp===1?"醫師・藥師・醫檢師・護理師":"醫院工作人員",score,correct,asked,v:3,ts:Date.now(),detail,answers:responsesRecord.map(r=>({q:r.q,id:r.id,grp:r.grp,ok:r.ok}))};
   local.push(rec);try{localStorage.setItem("hq_scores",JSON.stringify(local.slice(-500)))}catch(e){}
   let saved=false;
   if(db){try{await db.collection("scores").doc(eid+"_"+rec.ts).set(rec);saved=true}catch(e){}}
+  if(!db&&SHEET_URL){try{await fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({eid:rec.eid,uid:rec.uid,unit:rec.unit,grp:rec.grp,role:rec.role,score:rec.score,correct:rec.correct,asked:rec.asked,ts:rec.ts,detail:rec.detail})});saved=true}catch(e){}}
   if(db)await syncStats({key:eid+"_"+rec.ts,eid,unit,answers:rec.answers.map(x=>({id:x.id,ok:x.ok}))});
   $("sv").textContent=saved?"成績已上傳":"目前無法上傳，成績僅顯示於本機";
   await refresh();
@@ -343,12 +345,15 @@ function initQtab(){const tb=document.createElement("table");const h=document.cr
 async function refresh(){renderBoss();
   let rows=local;
   if(db){try{const s=await db.collection("scores").orderBy("score","desc").limit(300).get();rows=s.docs.map(d=>d.data())}catch(e){}}
+  else if(SHEET_URL){try{const r=await sheetRows();const m={};[...rows,...r].forEach(x=>m[x.eid+"_"+x.ts]=x);rows=Object.values(m).sort((a,b)=>b.score-a.score).slice(0,300)}catch(e){}}
   render(rows);
 }
+async function sheetRows(){const r=await fetch(SHEET_URL+"?action=scores");const j=await r.json();return Array.isArray(j)?j:[]}
 function bumpErr(id,ok){try{const s=JSON.parse(localStorage.getItem("hq_stats2")||"{}");const o=s[id]||{w:0,t:0};o.t++;if(!ok)o.w++;s[id]=o;localStorage.setItem("hq_stats2",JSON.stringify(s))}catch(e){}}
 async function getAllRows(){ // 合併本機 LocalStorage 與共同資料庫紀錄（以 員工編號+時間 去重）
   const m={};local.forEach(r=>m[r.eid+"_"+r.ts]=r);
   if(db){try{const s=await db.collection("scores").get();s.docs.forEach(d=>{const r=d.data();m[r.eid+"_"+r.ts]=r})}catch(e){}}
+  if(!db&&SHEET_URL){try{(await sheetRows()).forEach(r=>m[r.eid+"_"+r.ts]=r)}catch(e){}}
   return Object.values(m);
 }
 // ===== 單位：自動建議與寫法統一 =====
@@ -417,5 +422,5 @@ async function exportCsv(){
 }
 render(local);
 document.querySelectorAll(".walker").forEach(w=>{const d=18+Math.random()*24;w.style.setProperty("--d",d.toFixed(1)+"s");w.style.setProperty("--o","-"+(Math.random()*2*d).toFixed(1)+"s");w.style.setProperty("--h",(0.4+Math.random()*0.35).toFixed(2)+"s");w.style.bottom=(1+Math.random()*6).toFixed(1)+"vh";w.style.width=(40+Math.random()*10).toFixed(0)+"px"});
-(async()=>{try{db=await claude.use("db")}catch(e){db=null}try{dl=await claude.use("downloads");const u=await claude.use("user");adm=!!(u&&((await u.isOwner())||(await u.canEdit())))}catch(e){}if(adm||(!db&&location.hash==="#admin"))$("audit").hidden=false;if((dl&&adm)||(!db&&location.hash==="#admin")){$("csv").hidden=false;$("csv").onclick=exportCsv}if(!db){const n=document.createElement("div");n.className="note";n.textContent="⚠ 目前為單機模式：排行榜與錯題統計只包含本裝置的紀錄";$("lb0").after(n)}initST();if(adm)initQtab();if(db&&getPend().length)syncStats().then(renderBoss).catch(()=>{});refresh()})();
+(async()=>{try{db=await claude.use("db")}catch(e){db=null}try{dl=await claude.use("downloads");const u=await claude.use("user");adm=!!(u&&((await u.isOwner())||(await u.canEdit())));try{uid=(u&&await u.id())||""}catch(e){}}catch(e){}if(adm||(!db&&location.hash==="#admin"))$("audit").hidden=false;if((dl&&adm)||(!db&&location.hash==="#admin")){$("csv").hidden=false;$("csv").onclick=exportCsv}if(!db&&!SHEET_URL){const n=document.createElement("div");n.className="note";n.textContent="⚠ 目前為單機模式：排行榜與錯題統計只包含本裝置的紀錄";$("lb0").after(n)}initST();if(adm)initQtab();if(db&&getPend().length)syncStats().then(renderBoss).catch(()=>{});refresh()})();
 </script></body></html>
